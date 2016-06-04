@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="meteo-demo:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="DemoMeteo.war">
+      <element id="artifact" artifact-name="meteo-demo:war exploded" />
+    </root>
+  </artifact>
+</component>
