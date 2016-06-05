@@ -15,8 +15,11 @@ import javax.inject.Named;
 public class HomeViewModel {
     private String aMessage = "Message from view model (not post construct :( )";
 
-    @Inject
-    MeteoServiceAsker asker;
+    final MeteoServiceAsker asker;
+
+    public HomeViewModel() {
+        asker = new MeteoServiceAsker();
+    }
 
     @PostConstruct
     public void reset() {
