@@ -6,8 +6,13 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 <f:view>
-    <h:outputLabel value="#{homeViewModel.aMessage}"/>
-    <br />
-    <h:outputLabel value="#{homeViewModel.meteo}"/>
+    <h:form>
+        <h:panelGrid columns="2">
+            <h:outputLabel value="Town" for="town" />
+            <h:inputText id="town" value="#{homeViewModel.town}" />
+        </h:panelGrid>
+        <h:commandButton actionListener="#{homeViewModel.ask()}" value="Ask" /><br />
+        <h:outputText value="#{homeViewModel.aMessage}" />
+    </h:form>
 </f:view>
 </html>

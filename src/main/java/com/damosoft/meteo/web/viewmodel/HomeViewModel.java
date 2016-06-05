@@ -4,6 +4,7 @@ import com.damosoft.meteo.services.service.MeteoServiceAsker;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -11,11 +12,12 @@ import javax.inject.Named;
  * Created by User on 04/06/2016.
  */
 @Named
-@RequestScoped
-public class HomeViewModel {
+@SessionScoped
+public class HomeViewModel implements java.io.Serializable {
     private String aMessage = "Message from view model (not post construct :( )";
 
     final MeteoServiceAsker asker;
+    private String town;
 
     public HomeViewModel() {
         asker = new MeteoServiceAsker();
@@ -26,6 +28,10 @@ public class HomeViewModel {
         this.aMessage = "Message from post construct";
     }
 
+    public void ask() {
+        this.aMessage = asker.getMeteo(this.town);
+    }
+
     public String getaMessage() {
         return aMessage;
     }
@@ -34,7 +40,11 @@ public class HomeViewModel {
         this.aMessage = aMessage;
     }
 
-    public String getMeteo() {
-        return asker.getMeteo("habay");
+    public void setTown(String town) {
+        this.town = town;
+    }
+
+    public String getTown() {
+        return town;
     }
 }

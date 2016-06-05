@@ -10,6 +10,6 @@ import javax.ws.rs.client.ClientBuilder;
 public class MeteoServiceAsker {
     public String getMeteo(final String town) {
         Client client = ClientBuilder.newClient();
-        return client.target("http://localhost:8081/MeteoProvider/rest/meteo/habay").request().get(String.class);
+        return client.target("http://localhost:8081/MeteoProvider/rest/meteo/" + town).request().get(String.class);
     }
 }
